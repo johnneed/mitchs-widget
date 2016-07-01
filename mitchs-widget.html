@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Mitch's-Widget-Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="mitches-widget.css">
+    <!-- This if your fake data source and the function you want called -->
+
+</head>
+<body>
+<!--[if lt IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<h1>Mitch's Widget Demo</h1>
+<!-- the mitchs-widget script will look for this element -->
+<section id="mitchsWidget" class="mitchs-widget"></section>
+
+<!--
+ The scripts must load after the DOM otherwise you'll get an undefined error for mitches-widget.
+  You can use jQuery.ready function if you have jquery and you want this script in the <head>
+  or you can load this script here, just before the closing </body> tag. -->
+<script src="mitches-widget.js"></script>
+<script>
+    var data = [{
+        name: "Analysis 1",
+        id: "ABCD1",
+        area: "Area 1",
+        factor: "Factor 1",
+        product: "Product 1"
+    }, {
+        name: "Analysis 2",
+        id: "ABCD2",
+        area: "Area 2",
+        factor: "Factor 1",
+        product: "Product 2"
+    }, {
+        name: "Analysis 3",
+        id: "ABCD3",
+        area: "Area 1",
+        factor: "Factor 2",
+        product: "Product 1"
+    }, {
+        name: "Analysis 4",
+        id: "ABCD4",
+        area: "Area 3",
+        factor: "Factor 3",
+        product: "Product 3"
+    }, {
+        name: "Analysis 5",
+        id: "ABCD5",
+        area: "Area 4",
+        factor: "Factor 3",
+        product: "Product 4"
+    }, {
+        name: "Analysis 10",
+        id: "AAAAA1",
+        area: "Area 1",
+        factor: "Factor 1",
+        product: "Product 1"
+    }, {
+        name: "Next Analysis",
+        id: "BBBBB3",
+        area: "Area 2",
+        factor: "Factor 1",
+        product: "Product 2"
+    }, {
+        name: "Another Idea",
+        id: "CCCD2",
+        area: "Area 5",
+        factor: "Factor 90",
+        product: "Product 1"
+    }, {
+        name: "Something to think about",
+        id: "999111",
+        area: "Area 3",
+        factor: "Factor 3",
+        product: "Product 3"
+    }, {
+        name: "Interesting",
+        id: "abcd992",
+        area: "Area 4",
+        factor: "Factor 12",
+        product: "Product 5"
+    }];
+
+    function getMoreInfo(id) {
+        alert('you clicked ' + id);
+    }
+
+    MITCH.mitchesWidget(data, getMoreInfo);
+</script>
+
+</body>
+</html>

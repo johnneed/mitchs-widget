@@ -252,6 +252,4 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-mitches-widget.css
-mitches-widget.js
-mitchs-widget.html
+
