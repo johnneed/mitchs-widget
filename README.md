@@ -2,4 +2,4 @@
 Mitch's Widget
 
 
-Open mitc
+Open mitches-widget.html in a browser.
