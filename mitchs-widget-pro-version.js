@@ -6,9 +6,6 @@ window.MITCH.mitchsWidget = (function () {
         "Factor:{{factor}}, " +
         "Product:{{product}}";
 
-    function handleClick(id) {
-        clickFunc(id);
-    }
 
 
     function createButtons(data) {
@@ -56,6 +53,9 @@ window.MITCH.mitchsWidget = (function () {
 
         }
         function destroy(){}
+        function handleClick(id) {
+            clickFunction(id);
+        }
 
         //sanity check
         if(typeof initObject !== "object" || typeof initObject.clickFunction !== "function" || typeof initObject.elementId !== "string"){
@@ -74,6 +74,7 @@ window.MITCH.mitchsWidget = (function () {
             return undefined;
         }
 
+        //Render buttons if we got data.
         render();
 
 
