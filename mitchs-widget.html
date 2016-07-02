@@ -19,8 +19,11 @@
 <![endif]-->
 <h1>Mitch's Widget Demo</h1>
 <!-- the mitchs-widget script will look for this element -->
-<section id="mitchsWidget" class="mitchs-widget"></section>
-
+<section id="mitchsWidget"></section>
+<div>
+    <button id="render">Render New Data</button>
+    <button id="destroy">destroy widget</button>
+</div>
 <!--
  The scripts must load after the DOM otherwise you'll get an undefined error for mitches-widget.
   You can use jQuery.ready function if you have jquery and you want this script in the <head>
@@ -93,7 +96,38 @@
         alert('you clicked ' + id);
     }
 
-    MITCH.mitchsWidget(data, getMoreInfo);
+    (function () {
+        var a = window.widget = MITCH.mitchsWidget.create({
+            elementId: "mitchsWidget",
+            clickFunction: getMoreInfo,
+            buttonData: data
+        });
+        var destroyButton = document.getElementById("destroy");
+        var renderButton = document.getElementById("render");
+        destroyButton.onclick = a.destroy;
+        renderButton.onclick = function () {
+            var newData = [{
+                name: "AAAa",
+                id: "ABCD1",
+                area: "Area 1",
+                factor: "BBBb",
+                product: "Product 1"
+            }, {
+                name: "CCCC",
+                id: "ABCD2",
+                area: "Area 2",
+                factor: "Factor 1",
+                product: "Product 2"
+            }, {
+                name: "DDDD",
+                id: "ABCD3",
+                area: "Area 1",
+                factor: "Factor 2",
+                product: "Product 1"
+            }];
+            a.render(newData);
+        }
+    }());
 </script>
 
 </body>
