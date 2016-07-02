@@ -1,5 +1,5 @@
 window.MITCH = window.MITCH || {};
-window.MITCH.mitchesWidget = function (data, clickFunc) {
+window.MITCH.mitchsWidget = function (data, clickFunc) {
 
     var template = "Area:{{area}}, " +
         "Factor:{{factor}}, " +
