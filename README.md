@@ -5,8 +5,9 @@ Mitch's Widget
 Open mitches-widget.html in a browser.
 
 ## To Use:
-load the script
-<script src="mitchs-widget.js"></script>
+load the script via a script tag
+
+&lt;script src="mitchs-widget.js"&gt;&lt;/script&gt;
 
 
 ## Create a new widget
