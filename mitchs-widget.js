@@ -74,6 +74,10 @@ window.MITCH.mitchsWidget = (function () {
             }
         }
 
+
+        /**
+         * removes listeners and allows widget to be garbage collected.
+         */
         function destroy() {
             parentElement.removeEventListener("click", handleClick);
             parentElement.innerHTML = "";
