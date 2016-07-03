@@ -10,21 +10,37 @@ window.MITCH.mitchsWidget = (function () {
      * creates a new widget.
      * @param {object} initObject
      * initObject has this schema {elementId:string, clickFunction:function, [titleTemplate:string], [buttonData:object]}
-     * @returns {object} new Widget
+     * @returns {object} mitchsWidget
      */
     function create(initObject) {
         var clickFunction, buttonData, elementId, titleTemplate, parentElement;
 
         function handleClick(event){
             var analysisId;
-            if(event && event.path) {
-                analysisId = event.path.reduce(function (id, elem) {
-                    return id || elem.getAttribute("data-id");
-                }, null);
-                if (analysisId !== null) {
-                    clickFunction(analysisId);
-                }
+            event.preventDefault();
+            console.log(event.target);
+            // Find the button with the data-id in our event.
+            switch(true){
+                case  !!(event && event.path) : // Chrome
+                    analysisId = event.path.reduce(function (id, elem) {
+                        return id || elem.getAttribute("data-id");
+                    }, null);
+                    break;
+                case !!(event && event.target) :// Firefox
+                    analysisId =  event.target.getAttribute("data-id");
+                    break;
+                case !!(event && event.srcElement) :// Old IE
+                    analysisId = event.srcELement.getAttribute("data-id");
+                    if(!analysisId){
+                        analysisId =event.srcElement.parentNode.getAttribute("data-id");
+                    }
+                    break;
+
             }
+            if (analysisId !== null) {
+                clickFunction(analysisId);
+            }
+
         }
 
 
@@ -34,12 +50,10 @@ window.MITCH.mitchsWidget = (function () {
 
             //Add buttons to our wrapper
             data.forEach(function (analysis) {
-                var attr = document.createAttribute("data-id");
                 var title = titleTemplate;
                 var newButton = document.createElement("button");
-                attr.value = analysis.id;
                 newButton.className = "mitchs-widget_analysis";
-                newButton.setAttributeNode(attr);
+                newButton.setAttribute("data-id", analysis.id);
                 Object.keys(analysis).forEach(function (key) {
                     title = title.replace("{{" + key + "}}", analysis[key]);
                 });
