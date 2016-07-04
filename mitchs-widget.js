@@ -16,7 +16,7 @@ window.MITCH.mitchsWidget = (function () {
         var clickFunction, buttonData, elementId, titleTemplate, parentElement;
 
         function handleClick(event){
-            var analysisId;
+            var analysisId, srcId;
             event.preventDefault();
             console.log(event.target);
             // Find the button with the data-id in our event.
@@ -30,10 +30,7 @@ window.MITCH.mitchsWidget = (function () {
                     analysisId =  event.target.getAttribute("data-id");
                     break;
                 case !!(event && event.srcElement) :// Old IE
-                    analysisId = event.srcELement.getAttribute("data-id");
-                    if(!analysisId){
-                        analysisId =event.srcElement.parentNode.getAttribute("data-id");
-                    }
+                    analysisId = event.srcElement.getAttribute("data-id") || null;
                     break;
 
             }
