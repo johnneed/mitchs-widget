@@ -18,12 +18,12 @@ window.MITCH.mitchsWidget = (function () {
         function handleClick(event){
             var analysisId, srcId;
             event.preventDefault();
-            console.log(event.target);
+            event.stopPropagation();
             // Find the button with the data-id in our event.
             switch(true){
                 case  !!(event && event.path) : // Chrome
                     analysisId = event.path.reduce(function (id, elem) {
-                        return id || elem.getAttribute("data-id");
+                        return id || (elem.getAttribute && elem.getAttribute("data-id")) || null;
                     }, null);
                     break;
                 case !!(event && event.target) :// Firefox
