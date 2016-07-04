@@ -17,26 +17,29 @@ window.MITCH.mitchsWidget = (function () {
 
         function handleClick(event){
             var analysisId, srcId;
-            event.preventDefault();
-            event.stopPropagation();
-            // Find the button with the data-id in our event.
-            switch(true){
-                case  !!(event && event.path) : // Chrome
-                    analysisId = event.path.reduce(function (id, elem) {
-                        return id || (elem.getAttribute && elem.getAttribute("data-id")) || null;
-                    }, null);
-                    break;
-                case !!(event && event.target) :// Firefox
-                    analysisId =  event.target.getAttribute("data-id");
-                    break;
-                case !!(event && event.srcElement) :// Old IE
-                    analysisId = event.srcElement.getAttribute("data-id") || null;
-                    break;
 
-            }
-            if (analysisId !== null) {
-                clickFunction(analysisId);
-            }
+                // Find the button with the data-id in our event.
+                switch (true) {
+                    case  !!(event && event.path) : // Chrome
+                        analysisId = event.path.reduce(function (id, elem) {
+                            return id || (elem.getAttribute && elem.getAttribute("data-id")) || null;
+                        }, null);
+                        break;
+                    case !!(event && event.target) :// Firefox and IE Edge
+                        if (event.target !== event.currentTarget) {
+                            analysisId = event.target.getAttribute("data-id") || null;
+                        }
+
+                        break;
+                    case !!(event && event.srcElement) :// Old IE
+                        analysisId = event.srcElement.getAttribute("data-id") || null;
+                        break;
+
+                }
+                event.stopPropagation();
+                if (analysisId !== null) {
+                    clickFunction(analysisId);
+                }
 
         }
 
@@ -56,7 +59,7 @@ window.MITCH.mitchsWidget = (function () {
                 });
                 title = title.replace(/{{.*?}}/g, "");
                 newButton.title = title;
-                newButton.innerHTML = "<span>" + analysis.name + "</span>";
+                newButton.innerHTML = analysis.name;
                 wrapper.appendChild(newButton);
             });
 
