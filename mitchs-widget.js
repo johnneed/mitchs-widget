@@ -113,7 +113,7 @@ window.MITCH.mitchsWidget = (function () {
             return undefined;
         }
         //attach clickFunction
-        parentElement.addEventListener("click", handleClick);
+        parentElement.addEventListener("click", handleClick,false);
 
         //Render buttons if we got data.
         render();
