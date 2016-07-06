@@ -29,7 +29,6 @@ window.MITCH.mitchsWidget = (function () {
                         if (event.target !== event.currentTarget) {
                             analysis = event.target || null;
                         }
-
                         break;
                     case !!(event && event.srcElement) :// Old IE
                         analysis = event.srcElement || null;
@@ -43,9 +42,7 @@ window.MITCH.mitchsWidget = (function () {
                     });
                     analysis.className += " is-active-analysis-button";
                     clickFunction(analysis);
-
                 }
-
             }
 
 
@@ -87,6 +84,7 @@ window.MITCH.mitchsWidget = (function () {
                 }
                 try {
                     parentElement.innerHTML = "";
+                    buttons=[];
                     parentElement.appendChild(createButtons(buttonData));
                     return true;
                 } catch (err) {
@@ -137,7 +135,5 @@ window.MITCH.mitchsWidget = (function () {
 
 
         return {create: create};
-    }
-    ()
-)
-;
+    }()
+);
