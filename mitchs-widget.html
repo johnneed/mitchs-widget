@@ -92,7 +92,8 @@
         product: "Product 5"
     }];
 
-    function getMoreInfo(id) {
+    function getMoreInfo(elem) {
+        var id = elem.getAttribute("data-id");
         alert('you clicked ' + id);
     }
 

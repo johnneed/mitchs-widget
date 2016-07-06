@@ -1,18 +1,18 @@
-.mitchs-widget{
+.mitchs-widget {
     border: solid 1px #CCC;
     padding: .25em;
     margin: 1em;
     text-align: center;
 }
 
-.mitchs-widget_analysis{
+.mitchs-widget_analysis {
     border: solid 1px #CCC;
     display: inline-block;
     padding: 1em;
     margin: 1em;
     min-height: 10em;
     width: 10em;
-    cursor:pointer;
+    cursor: pointer;
     vertical-align: top;
     box-shadow: 0px 6px 5px -5px #666;
     transition: background-color 0.7s;
@@ -20,9 +20,15 @@
     z-index: 1;
 }
 
-.mitchs-widget_analysis:hover{
+.mitchs-widget_analysis.is-active-analysis-button {
+    border: 1px solid red;
+    outline: none;
+}
+
+.mitchs-widget_analysis:hover {
     background-color: #EEE;
 }
+
 /* .mitchs-widget_analysis[title]:hover:after {
   content: attr(title);
   position: absolute;
