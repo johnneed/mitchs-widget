@@ -25,7 +25,7 @@ The id the element you contain the new widget
 The function you want called when a button is clicked.
 the analysisID will be passed as a parameter to this function
 
-**titleTemplate :: string - optional **
+**titleTemplate :: string - optional**
 A string representing what will be placed in each button's title attibute
 surround key names encased in double braces will be replaced with their data values
 keys that don't match the data will be removed.
